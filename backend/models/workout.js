@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const exerciseSchema = new mongoose.Schema({
+const exerciseSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -15,11 +15,16 @@ const exerciseSchema = new mongoose.Schema({
         required: true,
     },
     muscleGroup: {
-        type: [Schema.Types.ObjectId],
+        type: [String],
     },
 });
 
-const workoutSchema = new mongoose.Schema({
+const workoutSchema = new Schema({
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+    },
     sets: {
         type: String,
         required: true,
@@ -36,7 +41,7 @@ const workoutSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    workout: [exerciseSchema],
+    exercises: [exerciseSchema],
 });
 
 module.exports = mongoose.model('Workout', workoutSchema);
