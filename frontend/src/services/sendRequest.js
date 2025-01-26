@@ -6,7 +6,7 @@ export default async function sendRequest(
   payload = null
 ) {
   // Fetch accepts an options object as the 2nd argument
-  // used to include a data payload, set headers, specifiy the method, etc.
+  // used to include a data payload, set headers, specify the method, etc.
   const options = { method };
   // If payload is a FormData object (used to upload files),
   // fetch will automatically set the Content-Type to 'multipart/form-data',
