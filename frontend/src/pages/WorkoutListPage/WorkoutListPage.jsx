@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import * as postService from '../../services/workoutService';
-import './PostListPage.css';
+import * as workoutService from '../../services/workoutService';
+import './WorkoutListPage.css';
 import PostItem from '../../components/PostItem/PostItem';
 
 export default function PostListPage() {
@@ -8,7 +8,7 @@ export default function PostListPage() {
 
   useEffect(() => {
     async function fetchPosts() {
-      const posts = await postService.index();
+      const posts = await workoutService.index();
       setPosts(posts);
     }
     fetchPosts();
@@ -18,7 +18,7 @@ export default function PostListPage() {
 
   return (
     <>
-      <h1>Post List</h1>
+      <h1>Workout List</h1>
       <section className="post-item-container">{postItems}</section>
     </>
   );

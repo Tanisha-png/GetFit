@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import * as postService from '../../services/workoutService';
+import * as workoutService from '../../services/workoutService';
 
-export default function NewPostPage() {
+export default function NewWorkoutPage() {
   const [content, setContent] = useState('');
 
   const navigate = useNavigate();
@@ -10,8 +10,8 @@ export default function NewPostPage() {
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
-      const post = await postService.create(content);
-      navigate('/posts');
+      const workout = await workoutService.create(content);
+      navigate('/workouts');
     } catch (err) {
       console.log(err);
     }
@@ -19,7 +19,7 @@ export default function NewPostPage() {
 
   return (
     <>
-      <h2>New Post</h2>
+      <h2>New Workout</h2>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <label>Post Content</label>
         <input

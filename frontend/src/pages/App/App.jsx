@@ -3,12 +3,12 @@ import { Routes, Route } from 'react-router';
 import { getUser } from '../../services/authService';
 import './App.css';
 import HomePage from '../HomePage/HomePage';
-import PostListPage from '../PostListPage/PostListPage';
+import PostListPage from '../WorkoutListPage/WorkoutListPage';
 import NewPostPage from '../NewWorkoutPage/NewWorkoutPage';
 import SignUpPage from '../SignUpPage/SignUpPage';
 import LogInPage from '../LogInPage/LogInPage';
 import NavBar from '../../components/NavBar/NavBar';
-import NewWorkoutPage from '../../components/NewWorkoutPage/NewWorkout';
+import NewWorkoutPage from '../../components/NewWorkout/NewWorkout';
 
 
 export default function App() {
