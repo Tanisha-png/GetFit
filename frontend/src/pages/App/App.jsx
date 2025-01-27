@@ -4,7 +4,6 @@ import { getUser } from '../../services/authService';
 import './App.css';
 import HomePage from '../HomePage/HomePage';
 import WorkoutListPage from '../WorkoutListPage/WorkoutListPage';
-// import NewPostPage from '../NewPostPage/NewPostPage';
 import SignUpPage from '../SignUpPage/SignUpPage';
 import LogInPage from '../LogInPage/LogInPage';
 import NavBar from '../../components/NavBar/NavBar';

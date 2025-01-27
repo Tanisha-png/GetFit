@@ -10,20 +10,8 @@ const exerciseSchema = new Schema({
         type: String,
         required: true,
     },
-    category: {
-        type: String,
-        required: true,
-    },
     muscleGroup: {
-        type: [String],
-    },
-});
-
-const workoutSchema = new Schema({
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true,
+        type: String,
     },
     sets: {
         type: String,
@@ -36,6 +24,19 @@ const workoutSchema = new Schema({
     weight: {
         type: String,
         required: true,
+    },
+});
+
+const workoutSchema = new Schema({
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+    },
+    type: {
+        type: String,
+        required: true,
+        enum: ['calisthenics', 'exercises'],
     },
     day: {
         type: Date,

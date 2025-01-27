@@ -1,6 +1,7 @@
 import React,  { useState } from 'react';
 import { useNavigate } from 'react-router';
 
+
 const initialState = {
     sets: '',
     reps: '',
@@ -10,7 +11,7 @@ const initialState = {
     muscleGroup: [],
 };
 
-const NewWorkout = ({addWorkout}) => {
+const NewWorkout = ({}) => {
     const [workout, setWorkout] = useState(initialState);
 
     const navigate = useNavigate();
@@ -22,7 +23,7 @@ const NewWorkout = ({addWorkout}) => {
     const handleSubmit = (evt) => {
         console.log(evt);
         evt.preventDefault();
-        addWorkout(workout);
+        // addWorkout(workout);
         navigate('/workouts');
     };
 
@@ -40,6 +41,15 @@ const NewWorkout = ({addWorkout}) => {
                 type="text"
                 id="muscleGroup"
                 value={workout.muscleGroup}
+                onChange={handleChange}
+            />
+
+            <label htmlFor="Exercises">Exercises</label>
+            <textarea 
+                name="exercises"
+                type="text"
+                id="exercises"
+                value={[workout.exercises]}
                 onChange={handleChange}
             />
 
