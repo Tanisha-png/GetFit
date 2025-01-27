@@ -28,13 +28,12 @@ const NewWorkout = ({addWorkout}) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <Label htmlFor='workout'>Workout:</Label>
-            <select name="workout" id="workout" value={workout.exercises} onChange={handleChange}>
-                <option value="">Add Workout</option>
+            <label htmlFor='workout'>Workout:</label>
+            <select name="workout" id="workout" value={workout.value} onChange={handleChange}>
+                <option value="exercises">Exercises</option>
                 <option value="sets">Sets</option>
                 <option value="reps">Reps</option>
                 <option value="weight">Weight</option>
-                <option value="exercises">Exercises</option>
             </select>
 
             <label htmlFor="muscleGroup">Muscle Group</label>

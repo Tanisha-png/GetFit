@@ -3,7 +3,7 @@ import * as workoutService from '../../services/workoutService';
 import './WorkoutListPage.css';
 import PostItem from '../../components/PostItem/PostItem';
 
-export default function PostListPage() {
+export default function WorkoutListPage() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
