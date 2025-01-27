@@ -22,7 +22,7 @@ export default function NewWorkoutPage() {
     <>
       <h2>New Workout</h2>
       <NewWorkout />
-      {/* <form autoComplete="off" onSubmit={handleSubmit}>
+      <form autoComplete="off" onSubmit={handleSubmit}>
         <label>Post Workout</label>
         <input
           type="text"
@@ -30,8 +30,8 @@ export default function NewWorkoutPage() {
           onChange={(evt) => setContent(evt.target.value)}
           required
         />
-        <button type="submit">ADD WORKOUT</button>
-      </form> */}
+        <button type="submit">Add Workout</button>
+      </form>
     </>
   );
 }

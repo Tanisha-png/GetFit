@@ -45,6 +45,33 @@ const NewWorkout = ({addWorkout}) => {
                 onChange={handleChange}
             />
 
+            <label htmlFor="Sets">Sets</label>
+            <input 
+                name="sets"
+                type="text"
+                id="sets"
+                value={workout.sets}
+                onChange={handleChange}
+            />
+
+            <label htmlFor="Reps">Reps</label>
+            <input 
+                name="reps"
+                type="text"
+                id="reps"
+                value={workout.reps}
+                onChange={handleChange}
+            />
+
+            <label htmlFor="Weight">Weight</label>
+            <input 
+                name="weight"
+                type="text"
+                id="weight"
+                value={workout.weight}
+                onChange={handleChange}
+            />
+
             <button type="submit">Add Workout</button>
             </form>
     );
