@@ -35,7 +35,7 @@ const NewWorkout = ({addWorkout}) => {
             </select>
 
             <label htmlFor="muscleGroup">Muscle Group</label>
-            <input 
+            <textarea 
                 name="muscleGroup"
                 type="text"
                 id="muscleGroup"
@@ -44,7 +44,7 @@ const NewWorkout = ({addWorkout}) => {
             />
 
             <label htmlFor="Sets">Sets</label>
-            <input 
+            <textarea 
                 name="sets"
                 type="text"
                 id="sets"
@@ -53,7 +53,7 @@ const NewWorkout = ({addWorkout}) => {
             />
 
             <label htmlFor="Reps">Reps</label>
-            <input 
+            <textarea 
                 name="reps"
                 type="text"
                 id="reps"
@@ -62,7 +62,7 @@ const NewWorkout = ({addWorkout}) => {
             />
 
             <label htmlFor="Weight">Weight</label>
-            <input 
+            <textarea 
                 name="weight"
                 type="text"
                 id="weight"
