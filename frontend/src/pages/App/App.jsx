@@ -4,10 +4,12 @@ import { getUser } from '../../services/authService';
 import './App.css';
 import HomePage from '../HomePage/HomePage';
 import PostListPage from '../PostListPage/PostListPage';
-import NewPostPage from '../NewPostPage/NewPostPage';
+import NewPostPage from '../NewWorkoutPage/NewWorkoutPage';
 import SignUpPage from '../SignUpPage/SignUpPage';
 import LogInPage from '../LogInPage/LogInPage';
 import NavBar from '../../components/NavBar/NavBar';
+import NewWorkoutPage from '../../components/NewWorkoutPage/NewWorkout';
+
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -20,7 +22,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/posts" element={<PostListPage />} />
-            <Route path="/posts/new" element={<NewPostPage />} />
+            <Route path="/workouts/new" element={<NewWorkoutPage />} />
           </Routes>
         ) : (
           <Routes>
