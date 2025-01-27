@@ -18,7 +18,16 @@ const NewWorkoutPage = ({addWorkout}) => {
         setWorkout({...workout, [target.name]: target.value });
     };
 
-    const handleSubmit =
+    const handleSubmit = (evt) => {
+        console.log(evt);
+        evt.preventDefault();
+        addWorkout(workout);
+        navigate('/workouts');
+    };
+
+    return (
+        
+    )
 
 
 
