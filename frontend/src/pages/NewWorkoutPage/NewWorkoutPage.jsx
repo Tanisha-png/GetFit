@@ -7,9 +7,8 @@ export default function NewWorkoutPage() {
   // const [content, setContent] = useState('');
   const [workout, setWorkout] = useState({
     type: '',
-    day: Date,
-    exercise: [],
-    enum: []
+    day: '',
+    exercises: [],
   });
 
   const emptyExerciseState = {
@@ -43,7 +42,7 @@ export default function NewWorkoutPage() {
 
 async function handleSubmitExercise(evt) {
   evt.preventDefault();
-  setWorkout({...workout, exercises: [...workout.exercise, exercise]})
+  setWorkout({...workout, exercises: [...workout.exercises, exercise]})
   setExercise({...emptyExerciseState});
 };
 
@@ -54,17 +53,12 @@ async function handleSubmitExercise(evt) {
       <h2>New Workout</h2>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <label>Post Workout</label>
-        <select htmlFor="workout" id="workout" value={workout.type} onChange={handleSubmit}>
+        <select htmlFor="workout" id="workout" value={workout.type} onChange={(evt) => setWorkout(prevState =>({...prevState,type:evt.target.value}))}>
           <option value="exercises">Exercises</option>
           <option value="calisthenics">Calisthenics</option>
         </select>
-        <input
-          type="text"
-          value={workout.type}
-          name='type'
-          onChange={(evt) => setWorkout(prevState =>({...prevState,type:evt.target.value}))}
-          required
-        />
+        
+    
         <input
           type="date"
           value={workout.day}
@@ -92,6 +86,7 @@ async function handleSubmitExercise(evt) {
           name="description"
           value={exercise.description}
           onChange={(evt) => setExercise(prevState =>({...prevState,description: evt.target.value}))}
+          required
         />
 
         <label>Muscle Group</label>
@@ -100,6 +95,7 @@ async function handleSubmitExercise(evt) {
           name="muscleGroup"
           value={exercise.muscleGroup}
           onChange={(evt) => setExercise(prevState =>({...prevState,muscleGroup: evt.target.value}))}
+          required
         />
 
         <label>Sets</label>
@@ -108,6 +104,7 @@ async function handleSubmitExercise(evt) {
           name="sets"
           value={exercise.sets}
           onChange={(evt) => setExercise(prevState =>({...prevState,sets: evt.target.value}))}
+          required
         />
 
         <label>Reps</label>
@@ -116,6 +113,7 @@ async function handleSubmitExercise(evt) {
           name="reps"
           value={exercise.reps}
           onChange={(evt) => setExercise(prevState =>({...prevState,reps: evt.target.value}))}
+          required
         />
 
         <label>Weight</label>
@@ -124,6 +122,7 @@ async function handleSubmitExercise(evt) {
           name="weight"
           value={exercise.weight}
           onChange={(evt) => setExercise(prevState =>({...prevState,weight: evt.target.value}))}
+          required
         />
         <button type="submit">Add Exercise</button>
       </form>

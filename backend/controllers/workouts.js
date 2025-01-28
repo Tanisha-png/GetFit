@@ -9,7 +9,7 @@ module.exports = {
 
 // GET /api/workouts (INDEX action)
 async function index(req, res) {
-    const workouts = await Workout.find({}).populate('exercises');
+    const workouts = await Workout.find({}).populate('exercises').populate('user');
     res.json(workouts);
 }
 
