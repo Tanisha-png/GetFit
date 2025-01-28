@@ -12,6 +12,11 @@ import NewWorkoutPage from '../NewWorkoutPage/NewWorkoutPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false)
+
+  const handleButtonClick = () => {
+    setIsButtonDisabled(true);
+  };
 
   return (
     <main className="App">

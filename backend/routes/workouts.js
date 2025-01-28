@@ -11,6 +11,9 @@ router.post('/', workoutsCtrl.create);
 // GET /api/workouts
 router.get('/', workoutsCtrl.index);
 
+
+// Path start with '/api/workouts/exercises'
+
 // GET /api/workouts/exercises (INDEX action)
 router.get('/exercises', workoutsCtrl.allExercises);
 

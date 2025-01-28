@@ -15,15 +15,21 @@ async function index(req, res) {
 
 // POST /api/workouts (CREATE action)
 async function create(req, res) {
+    console.log(req.body);
+    const newWorkout = req.body.workout
+    
+    console.log(newWorkout)
     try {
-        req.body.user = req.user._id;
-        const workout = await Workout.create(req.body);
+        newWorkout.user = req.user._id;
+        const workout = await Workout.create(newWorkout);
         res.json(workout);
     } catch (err) {
         console.log(err);
         res.status(400).json({message: 'Create Post Failed'});
     }
 };
+
+
 
 // GET /api/workouts/exercises (INDEX action)
 async function allExercises(req, res) {
