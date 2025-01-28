@@ -49,7 +49,10 @@ async function handleSubmitExercise(evt) {
       <h2>New Workout</h2>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <label>Post Workout</label>
-        
+        <select htmlFor="workout" id="workout" value={workout.value} onChange={handleSubmit}>
+          <option value="exercises">Exercises</option>
+          <option value="calisthenics">Calisthenics</option>
+        </select>
         <input
           type="text"
           value={workout.type}
@@ -65,7 +68,7 @@ async function handleSubmitExercise(evt) {
           required
         />
         <button type="submit">Add Workout</button>
-      </form>
+      {/* </form>
 
       <form autoComplete="off" onSubmit={handleSubmitExercise}>
         <label>Post Exercise</label>
@@ -74,7 +77,7 @@ async function handleSubmitExercise(evt) {
           name="name"
           value={exercise.name}
           onChange={(evt) => setExercise(prevState =>({...prevState,name: evt.target.value}))}
-        />
+        /> */}
       </form>
     </>
   );
