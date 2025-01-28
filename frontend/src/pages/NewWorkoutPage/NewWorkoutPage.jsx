@@ -61,23 +61,65 @@ async function handleSubmitExercise(evt) {
           required
         />
         <input
-          type="date"
-          value={workout.date}
-          name='date'
+          type="day"
+          value={workout.day}
+          name='day'
           onChange={(evt) => setWorkout(prevState =>({...prevState,day: evt.target.value}))}
           required
         />
         <button type="submit">Add Workout</button>
-      {/* </form>
+      </form>
 
       <form autoComplete="off" onSubmit={handleSubmitExercise}>
         <label>Post Exercise</label>
+
+        <label>Name</label>
         <input 
           type="text"
           name="name"
           value={exercise.name}
           onChange={(evt) => setExercise(prevState =>({...prevState,name: evt.target.value}))}
-        /> */}
+        />
+
+        <label>Description</label>
+        <input 
+          type="text"
+          name="description"
+          value={exercise.description}
+          onChange={(evt) => setExercise(prevState =>({...prevState,description: evt.target.value}))}
+        />
+
+        <label>Muscle Group</label>
+        <input 
+          type="text"
+          name="muscleGroup"
+          value={exercise.muscleGroup}
+          onChange={(evt) => setExercise(prevState =>({...prevState,muscleGroup: evt.target.value}))}
+        />
+
+        <label>Sets</label>
+        <input 
+          type="text"
+          name="sets"
+          value={exercise.sets}
+          onChange={(evt) => setExercise(prevState =>({...prevState,sets: evt.target.value}))}
+        />
+
+        <label>Reps</label>
+        <input 
+          type="text"
+          name="reps"
+          value={exercise.reps}
+          onChange={(evt) => setExercise(prevState =>({...prevState,reps: evt.target.value}))}
+        />
+
+        <label>Weight</label>
+        <input 
+          type="text"
+          name="weight"
+          value={exercise.weight}
+          onChange={(evt) => setExercise(prevState =>({...prevState,weight: evt.target.value}))}
+        />
       </form>
     </>
   );
