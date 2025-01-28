@@ -4,16 +4,21 @@ import * as workoutService from '../../services/workoutService';
 
 
 export default function NewWorkoutPage() {
-  const [content, setContent] = useState('');
+  // const [content, setContent] = useState('');
   const [workout, setWorkout] = useState({
     type: '',
-    day: '',
-    exercise: []
+    day: Date,
+    exercise: [],
+    enum: []
   });
 
   const emptyExerciseState = {
     name: '',
     description: '',
+    muscleGroup: '',
+    sets: '',
+    reps: '',
+    weight: ''
   };
 
   const [exercise, setExercise] = useState({...emptyExerciseState})
@@ -38,7 +43,7 @@ export default function NewWorkoutPage() {
 
 async function handleSubmitExercise(evt) {
   evt.preventDefault();
-  setWorkout({...workout, exercises: [...workout.exercises, exercise]})
+  setWorkout({...workout, exercises: [...workout.exercise, exercise]})
   setExercise({...emptyExerciseState});
 };
 
@@ -49,7 +54,7 @@ async function handleSubmitExercise(evt) {
       <h2>New Workout</h2>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <label>Post Workout</label>
-        <select htmlFor="workout" id="workout" value={workout.value} onChange={handleSubmit}>
+        <select htmlFor="workout" id="workout" value={workout.type} onChange={handleSubmit}>
           <option value="exercises">Exercises</option>
           <option value="calisthenics">Calisthenics</option>
         </select>
@@ -61,7 +66,7 @@ async function handleSubmitExercise(evt) {
           required
         />
         <input
-          type="day"
+          type="date"
           value={workout.day}
           name='day'
           onChange={(evt) => setWorkout(prevState =>({...prevState,day: evt.target.value}))}
@@ -120,6 +125,7 @@ async function handleSubmitExercise(evt) {
           value={exercise.weight}
           onChange={(evt) => setExercise(prevState =>({...prevState,weight: evt.target.value}))}
         />
+        <button type="submit">Add Exercise</button>
       </form>
     </>
   );

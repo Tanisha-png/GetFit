@@ -36,7 +36,6 @@ const workoutSchema = new Schema({
     type: {
         type: String,
         required: true,
-        enum: ['calisthenics', 'exercises', 'cardio'],
     },
     day: {
         type: Date,
