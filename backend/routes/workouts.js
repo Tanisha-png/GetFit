@@ -11,6 +11,9 @@ router.post('/', workoutsCtrl.create);
 // GET /api/workouts
 router.get('/', workoutsCtrl.index);
 
+// DELETE /api/workouts/:id
+router.delete('/:workoutId/exercises/:exerciseId', workoutsCtrl.deleteExercise);
+
 
 // Path start with '/api/workouts/exercises'
 

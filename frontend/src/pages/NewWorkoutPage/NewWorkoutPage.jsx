@@ -37,9 +37,6 @@ export default function NewWorkoutPage() {
 
 
 
-  
-
-
 async function handleSubmitExercise(evt) {
   evt.preventDefault();
   setWorkout({...workout, exercises: [...workout.exercises, exercise]})

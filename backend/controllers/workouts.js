@@ -5,6 +5,7 @@ module.exports = {
     index,
     allExercises,
     createExercise,
+    deleteExercise,
 };
 
 // GET /api/workouts (INDEX action)
@@ -27,6 +28,13 @@ async function create(req, res) {
         console.log(err);
         res.status(400).json({message: 'Create Post Failed'});
     }
+};
+
+// DELETE /api/workouts/:workoutId/exercises/:exerciseId (DELETE action)
+async function deleteExercise(req, res) {
+    const workout = await Workout.findById(req.params.workoutId)
+    workout.exercises.id(req.params.exerciseId).deleteOne();
+    await workout.save();
 };
 
 

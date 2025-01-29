@@ -29,6 +29,8 @@ app.use('/api/posts', require('./routes/posts'));
 
 app.use('/api/workouts', require('./routes/workouts'));
 
+// app.use('/api/workouts/:id', require('./routes/workouts/:id'));
+
 // Use a "catch-all" route to deliver the frontend's production index.html
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
