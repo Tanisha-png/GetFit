@@ -8,6 +8,7 @@ import SignUpPage from '../SignUpPage/SignUpPage';
 import LogInPage from '../LogInPage/LogInPage';
 import NavBar from '../../components/NavBar/NavBar';
 import NewWorkoutPage from '../NewWorkoutPage/NewWorkoutPage';
+import WorkoutDetailsPage from '../WorkoutDetailsPage/WorkoutDetailsPage';
 
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/workouts" element={<WorkoutListPage />} />
             <Route path="/workouts/new" element={<NewWorkoutPage />} />
+            <Route path="/workouts/:id" element={<WorkoutDetailsPage />} />
           </Routes>
         ) : (
           <Routes>

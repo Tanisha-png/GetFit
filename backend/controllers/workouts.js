@@ -3,6 +3,7 @@ const Workout = require('../models/workout');
 module.exports = {
     create,
     index,
+    show,
     allExercises,
     createExercise,
     deleteExercise,

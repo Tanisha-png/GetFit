@@ -11,6 +11,9 @@ router.post('/', workoutsCtrl.create);
 // GET /api/workouts
 router.get('/', workoutsCtrl.index);
 
+// GET /api/:id
+router.get('/:id', workoutsCtrl.show);
+
 // DELETE /api/workouts/:id
 router.delete('/:workoutId/exercises/:exerciseId', workoutsCtrl.deleteExercise);
 

@@ -9,3 +9,11 @@ export async function index() {
 export async function create(workout) {
   return sendRequest(BASE_URL, 'POST', { workout });
 }
+
+export async function getAll() {
+  return sendRequest(BASE_URL);
+}
+
+export async function getOne(id) {
+  return sendRequest(`${BASE_URL}/${id}`);
+}
