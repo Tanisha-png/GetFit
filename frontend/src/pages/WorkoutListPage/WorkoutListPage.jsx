@@ -1,25 +1,25 @@
 import { useState, useEffect } from 'react';
 import * as workoutService from '../../services/workoutService';
 import './WorkoutListPage.css';
-import PostItem from '../../components/PostItem/PostItem';
+import WorkoutItem from '../../components/WorkoutItem/WorkoutItem';
 
 export default function WorkoutListPage() {
-  const [posts, setPosts] = useState([]);
+  const [workouts, setWorkouts] = useState([]);
 
   useEffect(() => {
-    async function fetchPosts() {
-      const posts = await workoutService.index();
-      setPosts(posts);
+    async function fetchWorkouts() {
+      const workouts = await workoutService.index();
+      setWorkouts(workouts);
     }
-    fetchPosts();
+    fetchWorkouts();
   }, []);
 
-  const postItems = posts.map((p) => <PostItem key={p._id} post={p} />);
+  const workoutItems = workouts.map((w) => <WorkoutItem key={w._id} workout={w} />);
 
   return (
     <>
       <h1>Workout List</h1>
-      <section className="post-item-container">{postItems}</section>
+      <section className="workout-item-container">{workoutItems}</section>
     </>
   );
 }

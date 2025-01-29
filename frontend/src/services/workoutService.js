@@ -10,6 +10,10 @@ export async function create(workout) {
   return sendRequest(BASE_URL, 'POST', { workout });
 }
 
+export async function deleteExercise(workoutId) {
+  
+}
+
 export async function getAll() {
   return sendRequest(BASE_URL);
 }
