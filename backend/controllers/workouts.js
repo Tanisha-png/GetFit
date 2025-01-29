@@ -15,6 +15,12 @@ async function index(req, res) {
     res.json(workouts);
 }
 
+// GET /api/workouts/:workoutsId (SHOW action)
+async function show(req, res) {
+    const workouts = await Workout.findById(req.params.workoutsId).populate('exercises');
+    res.json(workouts);
+}
+
 // POST /api/workouts (CREATE action)
 async function create(req, res) {
     console.log(req.body);
