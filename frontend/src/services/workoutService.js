@@ -18,8 +18,8 @@ export async function updateWorkout(workout, workoutId) {
   return sendRequest(`${BASE_URL}/${workoutId}`, 'PUT', workout);
 }
 
-export async function updateExercise( workoutId, exerciseId, exercise) {
-  return sendRequest(`${BASE_URL}/${workoutId}/exercises/${exerciseId}`, 'PUT', exercise);
+export async function updateExercise(exerciseId, exerciseData) {
+  return sendRequest(`${BASE_URL}/exercises/${exerciseId}`, 'PUT', exerciseData);
 }
 
 export async function create(workout) {

@@ -6,14 +6,8 @@ import "./WorkoutDetailsPage.css";
 export default function WorkoutDetailsPage() {
   const [workout, setWorkout] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
-  const [exerciseData, setExerciseData] = useState({
-    name: "",
-    description: "",
-    muscleGroup: "",
-    sets: "",
-    reps: "",
-    weight: "",
-  });
+  const [editingExerciseId, setEditingExerciseId] = useState(null);
+  const [exerciseData, setExerciseData] = useState(null);
 
   const { id } = useParams();
 
@@ -30,11 +24,23 @@ export default function WorkoutDetailsPage() {
     setWorkout(updatedWorkout);
   }
 
-  async function handleEditExercise(exerciseId) {
-    const isEditing = await workoutService.editExercise(exerciseId);
-    setIsEditing(isEditing);
+  async function handleEditExercise() {
+    const updatedWorkout = await workoutService.updateExercise(editingExerciseId, exerciseData);
+    setWorkout(updatedWorkout);
+    setEditingExerciseId(null);
   }
-  
+
+  async function handleChange(evt) {
+    setExerciseData({...exerciseData, [evt.target.name]: evt.target.value});
+  }
+
+  function handleEditClick(exercise) {
+    setEditingExerciseId(exercise._id);
+    const exerciseCopy = {...exercise};
+    delete exerciseCopy._id;
+    setExerciseData(exerciseCopy);
+  }
+
   if (!workout) return null;
 
   return (
@@ -50,22 +56,85 @@ export default function WorkoutDetailsPage() {
             <hr />
             <h4>Exercises</h4>
             {workout.exercises.length ? (
-              workout.exercises.map((ex) => <div key={ex._id}>
-                <h3>Description: {ex.description}</h3>
-                <h3>Name: {ex.name}</h3>
-                <h3>Muscle Group: {ex.muscleGroup}</h3>
-                <h3>Sets: {ex.sets}</h3>
-                <h3>Reps: {ex.reps}</h3>
-                <h3>Weight: {ex.weight}</h3>
-                <button onClick={() => handleEditExercise(ex._id)}>Edit 📝</button>
-                <button onClick={() => handleDeleteExercise(ex._id)}>Delete ❌</button>
-              </div>)
+              workout.exercises.map((ex) =>
+                ex._id === editingExerciseId ? (
+                  <form onSubmit={handleEditExercise}>
+                    <label>Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={exerciseData.name}
+                      onChange={handleChange}
+                    />
+
+                    <label>Description</label>
+                    <input
+                      type="text"
+                      name="description"
+                      value={exerciseData.description}
+                      onChange={handleChange}
+                      required
+                    />
+
+                    <label>Muscle Group</label>
+                    <input
+                      type="text"
+                      name="muscleGroup"
+                      value={exerciseData.muscleGroup}
+                      onChange={handleChange}
+                      required
+                    />
+
+                    <label>Sets</label>
+                    <input
+                      type="text"
+                      name="sets"
+                      value={exerciseData.sets}
+                      onChange={handleChange}
+                      required
+                    />
+
+                    <label>Reps</label>
+                    <input
+                      type="text"
+                      name="reps"
+                      value={exerciseData.reps}
+                      onChange={handleChange}
+                      required
+                    />
+
+                    <label>Weight</label>
+                    <input
+                      type="text"
+                      name="weight"
+                      value={exerciseData.weight}
+                      onChange={handleChange}
+                      required
+                    />
+                    <button type="submit">Save Exercise</button>
+                  </form>
+                ) : (
+                  <div key={ex._id}>
+                    <h3>Description: {ex.description}</h3>
+                    <h3>Name: {ex.name}</h3>
+                    <h3>Muscle Group: {ex.muscleGroup}</h3>
+                    <h3>Sets: {ex.sets}</h3>
+                    <h3>Reps: {ex.reps}</h3>
+                    <h3>Weight: {ex.weight}</h3>
+                    <button onClick={() => handleEditClick(ex)}>
+                      Edit 📝
+                    </button>
+                    <button onClick={() => handleDeleteExercise(ex._id)}>
+                      Delete ❌
+                    </button>
+                  </div>
+                )
+              )
             ) : (
               <p>No exercises yet</p>
             )}
           </article>
-          <div>
-          </div>
+          <div></div>
         </section>
       )}
     </>

@@ -90,7 +90,7 @@ export default function NewWorkoutPage() {
         </section>
 
         <form autoComplete="off" onSubmit={handleSubmitExercise}>
-          <label>Post Exercise</label>
+          <label>Workout Exercise</label>
 
           <label>Name</label>
           <input

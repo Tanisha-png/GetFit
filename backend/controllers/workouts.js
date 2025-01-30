@@ -52,12 +52,11 @@ async function updateWorkout(req, res) {
     };
 };
 
-// PUT /api/workouts/:workoutId/exercises/:exerciseId (UPDATE action)
+// PUT /api/workouts/exercises/:exerciseId (UPDATE action)
 async function updateExercise(req, res) {
     try {
-        const workout = await Workout.findById(req.params.workoutId);
+        const workout = await Workout.findOne({'exercises._id': req.params.exerciseId});
         const exercise = workout.exercises.id(req.params.exerciseId);
-        console.log({exercise});
         exercise.set(req.body);
         await workout.save();
         res.json(workout);
