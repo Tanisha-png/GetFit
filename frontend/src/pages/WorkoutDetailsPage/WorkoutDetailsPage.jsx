@@ -25,6 +25,11 @@ export default function WorkoutDetailsPage() {
     fetchWorkout();
   }, [id]);
 
+  async function handleDeleteExercise(exerciseId) {
+    const updatedWorkout = await workoutService.deleteExercise(exerciseId);
+    setWorkout(updatedWorkout);
+  }
+
   if (!workout) return null;
 
   return (
@@ -40,14 +45,16 @@ export default function WorkoutDetailsPage() {
             <hr />
             <h4>Exercises</h4>
             {workout.exercises.length ? (
-              <p>Exercises exist</p>
+              workout.exercises.map((ex) => <div key={ex._id}>
+                <h3>{ex.description}</h3>
+                <button>Edit 📝</button>
+                <button onClick={() => handleDeleteExercise(ex._id)}>Delete ❌</button>
+              </div>)
             ) : (
               <p>No exercises yet</p>
             )}
           </article>
           <div>
-            <button>Edit 📝</button>
-            <button>Delete ❌</button>
           </div>
         </section>
       )}

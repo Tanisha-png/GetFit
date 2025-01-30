@@ -26,8 +26,8 @@ export async function create(workout) {
   return sendRequest(BASE_URL, 'POST', { workout });
 }
 
-export async function deleteExercise(workout) {
-  return sendRequest(BASE_URL, 'DELETE', {workout})
+export async function deleteExercise(exerciseId) {
+  return sendRequest(`${BASE_URL}/delete-exercise/${exerciseId}`, 'DELETE')
 }
 
 export async function getAll() {

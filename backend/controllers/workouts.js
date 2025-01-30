@@ -88,8 +88,9 @@ async function createExercise(req, res) {
 
 // DELETE /api/workouts/:workoutId/exercises/:exerciseId (DELETE action)
 async function deleteExercise(req, res) {
-    const workout = await Workout.findById(req.params.workoutId)
+    const workout = await Workout.findOne({"exercises._id": req.params.exerciseId});
     workout.exercises.id(req.params.exerciseId).deleteOne();
     await workout.save();
+    res.json(workout);
 };
 
