@@ -51,12 +51,12 @@ export default function WorkoutDetailsPage() {
             <h4>Exercises</h4>
             {workout.exercises.length ? (
               workout.exercises.map((ex) => <div key={ex._id}>
-                <h3>{ex.description}</h3>
-                <h3>{ex.name}</h3>
-                <h3>{ex.muscleGroup}</h3>
-                <h3>{ex.sets}</h3>
-                <h3>{ex.reps}</h3>
-                <h3>{ex.weight}</h3>
+                <h3>Description: {ex.description}</h3>
+                <h3>Name: {ex.name}</h3>
+                <h3>Muscle Group: {ex.muscleGroup}</h3>
+                <h3>Sets: {ex.sets}</h3>
+                <h3>Reps: {ex.reps}</h3>
+                <h3>Weight: {ex.weight}</h3>
                 <button onClick={() => handleEditExercise(ex._id)}>Edit 📝</button>
                 <button onClick={() => handleDeleteExercise(ex._id)}>Delete ❌</button>
               </div>)
