@@ -5,7 +5,7 @@ import * as workoutService from "../../services/workoutService";
 
 export default function NewWorkoutPage() {
   const [workout, setWorkout] = useState({
-    type: "",
+    type: "exercise",
     day: "",
     exercises: [],
   });

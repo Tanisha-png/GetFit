@@ -30,6 +30,11 @@ export default function WorkoutDetailsPage() {
     setWorkout(updatedWorkout);
   }
 
+  async function handleEditExercise(exerciseId) {
+    const isEditing = await workoutService.editExercise(exerciseId);
+    setIsEditing(isEditing);
+  }
+  
   if (!workout) return null;
 
   return (
@@ -47,7 +52,12 @@ export default function WorkoutDetailsPage() {
             {workout.exercises.length ? (
               workout.exercises.map((ex) => <div key={ex._id}>
                 <h3>{ex.description}</h3>
-                <button>Edit 📝</button>
+                <h3>{ex.name}</h3>
+                <h3>{ex.muscleGroup}</h3>
+                <h3>{ex.sets}</h3>
+                <h3>{ex.reps}</h3>
+                <h3>{ex.weight}</h3>
+                <button onClick={() => handleEditExercise(ex._id)}>Edit 📝</button>
                 <button onClick={() => handleDeleteExercise(ex._id)}>Delete ❌</button>
               </div>)
             ) : (
