@@ -108,7 +108,7 @@ export default function EditWorkoutPage() {
           )}
         </section>
 
-        {/* <form autoComplete="off" onSubmit={handleSubmitExercise}>
+        <form autoComplete="off" onSubmit={handleSubmitExercise}>
           <label>Post Exercise</label>
 
           <label>Name</label>
@@ -194,7 +194,7 @@ export default function EditWorkoutPage() {
             required
           />
           <button type="submit">Add Exercise</button>
-        </form> */}
+        </form>
       </div>
     </>
   );

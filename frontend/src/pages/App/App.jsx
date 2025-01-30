@@ -8,6 +8,7 @@ import SignUpPage from '../SignUpPage/SignUpPage';
 import LogInPage from '../LogInPage/LogInPage';
 import NavBar from '../../components/NavBar/NavBar';
 import NewWorkoutPage from '../NewWorkoutPage/NewWorkoutPage';
+import EditWorkoutPage from '../EditWorkoutPage/EditWorkoutPage';
 import WorkoutDetailsPage from '../WorkoutDetailsPage/WorkoutDetailsPage';
 
 
