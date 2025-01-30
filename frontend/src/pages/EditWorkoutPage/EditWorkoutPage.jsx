@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
-import "./NewWorkoutPage.css";
+import { useNavigate, useParams } from "react-router";
+import "./EditWorkoutPage.css";
 import * as workoutService from "../../services/workoutService";
 
-export default function NewWorkoutPage() {
-  const [workout, setWorkout] = useState({
-    type: "",
-    day: "",
-    exercises: [],
-  });
+export default function EditWorkoutPage() {
+  const [workout, setWorkout] = useState(null);
+  // const [workoutData, setWorkoutData] = useState({
+  //   type: "",
+  //   day: "",
+  //   exercises: [],
+  // });
 
   const emptyExerciseState = {
     name: "",
@@ -21,32 +22,50 @@ export default function NewWorkoutPage() {
 
   const [exercise, setExercise] = useState({ ...emptyExerciseState });
 
+  const [exerciseData, setExerciseData] = useState({});
+
   const navigate = useNavigate();
 
-  async function handleSubmit(evt) {
+  const { id } = useParams();
+
+  async function handleSubmitWorkout(evt) {
     console.log(workout);
     evt.preventDefault();
     try {
-      await workoutService.create(workout);
+      const updatedWorkout = await workoutService.updateWorkout(workout, workout._id);
+      setWorkout(updatedWorkout)
       navigate("/workouts");
     } catch (err) {
       console.log(err);
     }
   }
 
+  useEffect(() => {
+      async function fetchWorkout() {
+        const workout = await workoutService.getOne(id);
+        setWorkout(workout);
+      }
+      fetchWorkout();
+    }, [id]);
+
   async function handleSubmitExercise(evt) {
     evt.preventDefault();
-    setWorkout({ ...workout, exercises: [...workout.exercises, exercise] });
-    setExercise({ ...emptyExerciseState });
+    try {
+      const updatedWorkout = await workoutService.updateExercise(workout._id, exercise._id, exerciseData);
+      setWorkout(updatedWorkout)
+      navigate("/workouts");
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
     <>
-      <h2>New Workout</h2>
-      <div className="NewWorkoutPage">
+      <h2>Edit Workout</h2>
+      <div className="EditWorkoutPage">
         <section>
-          <form autoComplete="off" onSubmit={handleSubmit}>
-            <label>Post Workout</label>
+          <form autoComplete="off" onSubmit={handleSubmitWorkout}>
+            <label>Update Workout</label>
             <select
               htmlFor="workout"
               id="workout"
@@ -74,7 +93,7 @@ export default function NewWorkoutPage() {
               }
               required
             />
-            <button type="submit">Add Workout</button>
+            <button type="submit">Edit Workout</button>
           </form>
           <hr />
           <h5>Exercises</h5>
@@ -85,11 +104,11 @@ export default function NewWorkoutPage() {
               </article>
             ))
           ) : (
-            <p>Must add exercises.</p>
+            <a><p>New Exercise</p></a>
           )}
         </section>
 
-        <form autoComplete="off" onSubmit={handleSubmitExercise}>
+        {/* <form autoComplete="off" onSubmit={handleSubmitExercise}>
           <label>Post Exercise</label>
 
           <label>Name</label>
@@ -175,7 +194,7 @@ export default function NewWorkoutPage() {
             required
           />
           <button type="submit">Add Exercise</button>
-        </form>
+        </form> */}
       </div>
     </>
   );

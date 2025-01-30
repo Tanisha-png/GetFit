@@ -45,6 +45,10 @@ export default function WorkoutDetailsPage() {
               <p>No exercises yet</p>
             )}
           </article>
+          <div>
+            <button>Edit 📝</button>
+            <button>Delete ❌</button>
+          </div>
         </section>
       )}
     </>

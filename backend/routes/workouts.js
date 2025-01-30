@@ -11,11 +11,18 @@ router.post('/', workoutsCtrl.create);
 // GET /api/workouts
 router.get('/', workoutsCtrl.index);
 
-// GET /api/:id
+// GET /api/workouts/:id
 router.get('/:id', workoutsCtrl.show);
 
-// DELETE /api/workouts/:id
+// DELETE /api/workouts/:workoutId/exercises/:exerciseId
 router.delete('/:workoutId/exercises/:exerciseId', workoutsCtrl.deleteExercise);
+
+// PUT /api/workouts/:workoutId/exercises/:exerciseId
+router.put('/:workoutId/exercises/:exerciseId', workoutsCtrl.updateExercise);
+
+// PUT /api/workouts/:workoutId
+router.put('/:workoutId', workoutsCtrl.updateWorkout);
+
 
 
 // Path start with '/api/workouts/exercises'

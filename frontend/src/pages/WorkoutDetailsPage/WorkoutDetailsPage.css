@@ -1,3 +1,4 @@
 .WorkoutDetailsPage {
     display: flex;
+    flex-direction: column;
 }

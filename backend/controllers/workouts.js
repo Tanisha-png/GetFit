@@ -4,6 +4,8 @@ module.exports = {
     create,
     index,
     show,
+    updateWorkout,
+    updateExercise,
     allExercises,
     createExercise,
     deleteExercise,
@@ -12,6 +14,7 @@ module.exports = {
 // GET /api/workouts (INDEX action)
 async function index(req, res) {
     const workouts = await Workout.find({}).populate('user');
+    console.log(workouts);
     res.json(workouts);
 }
 
@@ -20,6 +23,8 @@ async function show(req, res) {
     const workout = await Workout.findById(req.params.id);
     res.json(workout);
 }
+
+
 
 // POST /api/workouts (CREATE action)
 async function create(req, res) {
@@ -35,6 +40,30 @@ async function create(req, res) {
         console.log(err);
         res.status(400).json({message: 'Create Post Failed'});
     }
+};
+
+// PUT /api/workouts/:workoutId (UPDATE action)
+async function updateWorkout(req, res) {
+    try {
+        const workout = await Workout.findByIdAndUpdate(req.params.workoutId, req.body);
+        res.json(workout);
+    } catch (err) {
+        res.json(err);
+    };
+};
+
+// PUT /api/workouts/:workoutId/exercises/:exerciseId (UPDATE action)
+async function updateExercise(req, res) {
+    try {
+        const workout = await Workout.findById(req.params.workoutId);
+        const exercise = workout.exercises.id(req.params.exerciseId);
+        console.log({exercise});
+        exercise.set(req.body);
+        await workout.save();
+        res.json(workout);
+    } catch (err) {
+        res.json(err);
+    };
 };
 
 
