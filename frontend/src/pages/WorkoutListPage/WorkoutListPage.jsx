@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-// import {useNavigate} from "react-router";
 import * as workoutService from '../../services/workoutService';
 import './WorkoutListPage.css';
 import WorkoutItem from '../../components/WorkoutItem/WorkoutItem';
@@ -7,12 +6,9 @@ import WorkoutItem from '../../components/WorkoutItem/WorkoutItem';
 export default function WorkoutListPage() {
   const [workouts, setWorkouts] = useState([]);
 
-  // const navigate = useNavigate();
-
   async function handleDeleteWorkoutItem(workoutId) {
         const deletedWorkout = await workoutService.deleteWorkout(workoutId);
         setWorkouts(workouts.filter(workout => workout._id !== deletedWorkout._id));
-        // navigate('/workouts');
     }
 
   useEffect(() => {

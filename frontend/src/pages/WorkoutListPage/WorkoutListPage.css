@@ -5,7 +5,7 @@
 }
 
 .workout-item-container > article {
-  border: 0.5vmin solid black;
+  border: 0.5vmin solid yellow;
   padding: 2vmin;
   border-radius: 0.8vmin;
 }
