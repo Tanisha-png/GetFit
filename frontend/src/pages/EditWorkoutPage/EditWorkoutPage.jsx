@@ -5,11 +5,6 @@ import * as workoutService from "../../services/workoutService";
 
 export default function EditWorkoutPage() {
   const [workout, setWorkout] = useState(null);
-  // const [workoutData, setWorkoutData] = useState({
-  //   type: "",
-  //   day: "",
-  //   exercises: [],
-  // });
 
   const emptyExerciseState = {
     name: "",

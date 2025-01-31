@@ -15,7 +15,6 @@ module.exports = {
 // GET /api/workouts (INDEX action)
 async function index(req, res) {
     const workouts = await Workout.find({}).populate('user');
-    console.log(workouts);
     res.json(workouts);
 }
 
@@ -29,9 +28,7 @@ async function show(req, res) {
 
 // POST /api/workouts (CREATE action)
 async function create(req, res) {
-    console.log(req.body);
     const newWorkout = req.body.workout
-    console.log(newWorkout)
     try {
         newWorkout.user = req.user._id;
         const workout = await Workout.create(newWorkout);
