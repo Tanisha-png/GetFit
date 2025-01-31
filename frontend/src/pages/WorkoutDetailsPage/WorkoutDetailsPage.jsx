@@ -24,8 +24,8 @@ export default function WorkoutDetailsPage() {
     setWorkout(updatedWorkout);
   }
 
-  async function handleEditExercise() {
-    const updatedWorkout = await workoutService.updateExercise(editingExerciseId, exerciseData);
+  async function handleEditExercise(evt) {
+    evt.preventDefault();
     setWorkout(updatedWorkout);
     setEditingExerciseId(null);
   }
