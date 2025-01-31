@@ -6,16 +6,14 @@ module.exports = {
 };
 
 async function index(req, res) {
-  // const posts = await Post.find({}).populate('user').sort('-createdAt');
-  const posts = await Post.find({});
+  const posts = await Post.find({user: req.user._id}).populate('user').sort('-createdAt');
   res.json(posts);
 }
 
 async function create(req, res) {
   try {
     req.body.user = req.user._id;
-    // const post = await Post.create(req.body);
-    const posts = await Post.find({user: req.user._id})
+    const posts = await Post.create(req.body);
     res.json(posts);
   } catch (err) {
     console.log(err);
