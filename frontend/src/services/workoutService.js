@@ -30,6 +30,10 @@ export async function deleteExercise(exerciseId) {
   return sendRequest(`${BASE_URL}/delete-exercise/${exerciseId}`, 'DELETE')
 }
 
+export async function deleteWorkout(workoutId) {
+  return sendRequest(`${BASE_URL}/delete-workout/${workoutId}`, 'DELETE')
+}
+
 export async function getAll() {
   return sendRequest(BASE_URL);
 }

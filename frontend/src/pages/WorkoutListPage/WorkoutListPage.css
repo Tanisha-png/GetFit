@@ -5,7 +5,7 @@
 }
 
 .workout-item-container > article {
-  border: 0.5vmin dashed rebeccapurple;
+  border: 0.5vmin solid black;
   padding: 2vmin;
-  border-radius: 0.5vmin;
+  border-radius: 0.8vmin;
 }

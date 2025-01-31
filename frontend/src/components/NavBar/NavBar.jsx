@@ -22,6 +22,7 @@ export default function NavBar({ user, setUser }) {
           </NavLink>
           &nbsp; | &nbsp;
           <NavLink to="/workouts/new">New Workout</NavLink>
+          &nbsp; | &nbsp;
           <NavLink to="/workouts">Workouts</NavLink>
           &nbsp; | &nbsp;
           <Link to="" onClick={handleLogOut}>

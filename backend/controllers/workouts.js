@@ -9,6 +9,7 @@ module.exports = {
     allExercises,
     createExercise,
     deleteExercise,
+    deleteWorkout,
 };
 
 // GET /api/workouts (INDEX action)
@@ -30,7 +31,6 @@ async function show(req, res) {
 async function create(req, res) {
     console.log(req.body);
     const newWorkout = req.body.workout
-    
     console.log(newWorkout)
     try {
         newWorkout.user = req.user._id;
@@ -90,6 +90,12 @@ async function deleteExercise(req, res) {
     const workout = await Workout.findOne({"exercises._id": req.params.exerciseId});
     workout.exercises.id(req.params.exerciseId).deleteOne();
     await workout.save();
+    res.json(workout);
+};
+
+// DELETE /api/workouts/delete-workout/:workoutId (DELETE action)
+async function deleteWorkout(req, res) {
+    const workout = await Workout.findByIdAndDelete(req.params.workoutId);
     res.json(workout);
 };
 

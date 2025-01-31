@@ -19,10 +19,10 @@
     color: whitesmoke;
   }
 
-  a.active {
+  /* a.active {
     background-color: rebeccapurple;
     color: whitesmoke;
-  }
+  } */
 
   span {
     color: rgb(108, 9, 87);

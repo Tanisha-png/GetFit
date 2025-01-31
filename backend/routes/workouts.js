@@ -17,6 +17,9 @@ router.get('/:id', workoutsCtrl.show);
 // DELETE /api/workouts/delete-exercise/:exerciseId
 router.delete('/delete-exercise/:exerciseId', workoutsCtrl.deleteExercise);
 
+// DELETE /api/workouts/delete-workout/:workoutId
+router.delete('/delete-workout/:workoutId', workoutsCtrl.deleteWorkout);
+
 // PUT /api/workouts/exercises/:exerciseId
 router.put('/exercises/:exerciseId', workoutsCtrl.updateExercise);
 
