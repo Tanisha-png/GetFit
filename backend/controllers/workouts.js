@@ -14,7 +14,7 @@ module.exports = {
 
 // GET /api/workouts (INDEX action)
 async function index(req, res) {
-    const workouts = await Workout.find({}).populate('user');
+    const workouts = await Workout.find({user: req.user._id}).populate('user');
     res.json(workouts);
 }
 
@@ -65,7 +65,7 @@ async function updateExercise(req, res) {
 
 // GET /api/workouts/exercises (INDEX action)
 async function allExercises(req, res) {
-    const workout = await Workout.find({}).populate('exercises');
+    const workout = await Workout.find({user: req.user._id}).populate('exercises');
     res.json(workout);
 };
 
